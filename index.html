@@ -1,8 +1,368 @@
 <!doctype html>
-<html lang="ar">
-<head><meta charset="utf-8"><title>جاري التجهيز</title></head>
-<body style="font-family:Arial;text-align:center;margin-top:80px">
-  <h1>جاري التجهيز</h1>
-  <p>قريبًا…</p>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b0b0f" />
+  <meta name="description" content="وكالة إبداعية — الموقع قيد الإطلاق قريبًا." />
+
+  <title>Mulhima — وكالة إبداعية</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="apple-touch-icon" href="icon.png" />
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      /* مستوحاة من ألوان الشعار */
+      --bg: #0b0b0f;
+      --bg2:#0f1218;
+      --gold:#c8b36a;
+      --gold2:#b79f56;
+      --text:#f2f2f2;
+      --muted:rgba(242,242,242,.72);
+      --card: rgba(255,255,255,.06);
+      --stroke: rgba(200,179,106,.22);
+      --shadow: 0 24px 80px rgba(0,0,0,.55);
+      --radius: 22px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Tajawal", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 600px at 85% 10%, rgba(200,179,106,.18), transparent 60%),
+        radial-gradient(700px 500px at 10% 90%, rgba(200,179,106,.10), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: clamp(16px, 4vw, 40px);
+    }
+
+    .wrap{
+      width:min(980px, 100%);
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: clamp(14px, 3vw, 28px);
+      align-items:stretch;
+    }
+
+    .panel{
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .panel::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(420px 220px at 30% 10%, rgba(200,179,106,.22), transparent 60%),
+        radial-gradient(360px 240px at 80% 70%, rgba(200,179,106,.12), transparent 55%);
+      opacity:.9;
+      pointer-events:none;
+      filter: blur(0px);
+    }
+
+    .panel > *{position:relative; z-index:1;}
+
+    .left{
+      padding: clamp(18px, 3.2vw, 34px);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      min-height: 420px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .logo{
+      width: clamp(84px, 9vw, 120px);
+      height:auto;
+      display:block;
+      filter: drop-shadow(0 10px 22px rgba(0,0,0,.35));
+    }
+
+    .brandTitle{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      line-height:1.1;
+    }
+
+    .brandTitle strong{
+      font-size: clamp(18px, 2.2vw, 22px);
+      letter-spacing:.2px;
+    }
+
+    .brandTitle span{
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    h1{
+      margin: 0 0 12px 0;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.15;
+      letter-spacing: .2px;
+    }
+
+    .lead{
+      margin: 0 0 22px 0;
+      color: var(--muted);
+      font-size: clamp(14px, 1.8vw, 16px);
+      line-height: 1.8;
+      max-width: 55ch;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 4px;
+    }
+
+    .chip{
+      border: 1px solid rgba(200,179,106,.25);
+      background: rgba(200,179,106,.08);
+      color: rgba(242,242,242,.92);
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      white-space:nowrap;
+      backdrop-filter: blur(6px);
+    }
+
+    .right{
+      padding: clamp(18px, 3.2vw, 34px);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap: 14px;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(0,0,0,.15);
+      width: fit-content;
+      color: rgba(242,242,242,.9);
+      font-size: 13px;
+    }
+
+    .tag b{color: var(--gold); font-weight:700;}
+
+    .card{
+      border-radius: 18px;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.08);
+      padding: 16px;
+    }
+
+    .card h2{
+      margin: 0 0 8px 0;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .card p{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .contact{
+      display:grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap: 6px;
+    }
+
+    label{
+      font-size: 12px;
+      color: rgba(242,242,242,.75);
+    }
+
+    input, textarea{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(10,10,14,.55);
+      color: var(--text);
+      outline: none;
+      font-family: inherit;
+      font-size: 14px;
+      transition: border .15s ease, transform .15s ease, box-shadow .15s ease;
+    }
+
+    input:focus, textarea:focus{
+      border-color: rgba(200,179,106,.55);
+      box-shadow: 0 0 0 4px rgba(200,179,106,.12);
+    }
+
+    textarea{min-height: 110px; resize: vertical;}
+
+    .actions{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      margin-top: 6px;
+      flex-wrap: wrap;
+    }
+
+    .btn{
+      appearance:none;
+      border: 0;
+      cursor:pointer;
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing:.2px;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: #17160f;
+      box-shadow: 0 12px 24px rgba(200,179,106,.18);
+      transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+    }
+
+    .btn:hover{
+      transform: translateY(-1px);
+      filter: brightness(1.03);
+      box-shadow: 0 16px 30px rgba(200,179,106,.22);
+    }
+
+    .hint{
+      font-size: 12px;
+      color: rgba(242,242,242,.6);
+      line-height: 1.5;
+    }
+
+    .footer{
+      margin-top: 14px;
+      display:flex;
+      justify-content:space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      color: rgba(242,242,242,.55);
+      font-size: 12px;
+    }
+
+    a{
+      color: rgba(242,242,242,.85);
+      text-decoration:none;
+      border-bottom: 1px dotted rgba(200,179,106,.55);
+    }
+    a:hover{color:#fff}
+
+    /* Responsive */
+    @media (max-width: 860px){
+      .wrap{grid-template-columns: 1fr;}
+      .left{min-height:auto}
+    }
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      *{scroll-behavior:auto}
+      .btn{transition:none}
+      input,textarea{transition:none}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap" aria-label="صفحة قيد الإطلاق">
+    <!-- القسم الأيسر -->
+    <section class="panel left">
+      <div class="brand">
+        <!-- شعارك هنا -->
+        <img class="logo" src="logo.png" alt="Mulhima Logo">
+        <div class="brandTitle">
+          <strong>Mulhima Group</strong>
+          <span>Creative Agency</span>
+        </div>
+      </div>
+
+      <h1>نحوّل الأفكار إلى هوية… والهوية إلى تأثير.</h1>
+      <p class="lead">
+        نحن وكالة إبداعية نعمل على بناء العلامات التجارية، تصميم الهوية البصرية،
+        وصناعة محتوى وتسويق رقمي يليق بطموحك.
+      </p>
+
+      <div class="chips" aria-label="خدمات">
+        <div class="chip">Brand Identity</div>
+        <div class="chip">UI/UX</div>
+        <div class="chip">Content & Social</div>
+        <div class="chip">Digital Marketing</div>
+      </div>
+    </section>
+
+    <!-- القسم الأيمن -->
+    <aside class="panel right">
+      <div class="tag">🚀 <b>قريبًا</b> — إطلاق الموقع رسميًا</div>
+
+      <div class="card">
+        <h2>تواصل معنا</h2>
+        <p>اترك بريدك/رسالتك وسنعود لك سريعًا.</p>
+
+        <!-- نموذج مجاني عبر Formspree (اختياري) -->
+        <!-- 1) أنشئ فورم في https://formspree.io
+             2) استبدل XXXXXXX بالـ ID الخاص بك -->
+        <form class="contact" action="https://formspree.io/f/XXXXXXX" method="POST">
+          <div class="field">
+            <label for="email">البريد الإلكتروني</label>
+            <input id="email" name="email" type="email" placeholder="name@email.com" required>
+          </div>
+
+          <div class="field">
+            <label for="message">رسالتك</label>
+            <textarea id="message" name="message" placeholder="كيف نقدر نساعدك؟"></textarea>
+          </div>
+
+          <div class="actions">
+            <button class="btn" type="submit">إرسال</button>
+            <span class="hint">لن نستخدم بياناتك إلا للتواصل معك.</span>
+          </div>
+        </form>
+      </div>
+
+      <div class="footer">
+        <span>© <span id="y"></span> Mulhima Group</span>
+        <span><a href="mailto:info@mulhima.co">info@mulhima.co</a></span>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
