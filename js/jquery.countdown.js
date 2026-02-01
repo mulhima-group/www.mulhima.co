@@ -66,7 +66,7 @@ and GPL-3.0 (http://opensource.org/licenses/GPL-3.0) licenses.
           dateData.min = Math.floor(diff / 60);
           diff -= dateData.min * 60;
         }
-        dateData.sec = diff;
+        dateData.sec = Math.floor(diff);
         return dateData;
       };
       this.leadingZeros = function(num, length) {
