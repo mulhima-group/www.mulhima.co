@@ -311,4 +311,27 @@ margin:10px;
   max-width: 260px; /* عدلها لو تحب */
   height: auto;
 }
+/* FIX: show logo on mobile and keep it above overlays */
+.siteLogo{
+  display: block !important;
+  position: relative;
+  z-index: 9999;
+  text-align: center;
+  margin: 0 0 15px 0;
+}
+
+.siteLogo img{
+  display: inline-block !important;
+  max-width: 85vw;   /* بدل 260px ثابتة */
+  height: auto !important;
+}
+
+/* Mobile improvements */
+@media (max-width: 768px){
+  body{
+    position: relative;   /* مهم جدًا للموبايل */
+    height: auto;
+    min-height: 100%;
+  }
+}
 
