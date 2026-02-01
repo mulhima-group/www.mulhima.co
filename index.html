@@ -28,14 +28,32 @@
 
   <div class="countdown styled"></div> 
 <h2 class="intro">Our website is under construction. Stay tuned for something amazing!. Subscribe to be notified.</h2>
-<div id="subscribe"> 
-	<form action="" method="post" onsubmit="">
-		<p><input name="" value="Enter your e-mail" type="text" id=""/>
-		<input type="button" value="Submit"/></p>
-	<form id="subscribeForm"
-  action="https://docs.google.com/forms/d/e/1FAIpQLSdDIFN57s8IKF0goLPaNAX7ImvousLCNClHznhiW58nm268og/formResponse"
-  method="POST">
+<div id="subscribe">
+  <form id="subscribeForm"
+    action="https://docs.google.com/forms/d/e/1FAIpQLSdDIFN57s8IKF0goLPaNAX7ImvousLCNClHznhiW58nm268og/formResponse"
+    method="POST">
 
+    <p>
+      <input
+        type="email"
+        name="entry.2006348323"
+        placeholder="Enter your e-mail"
+        required>
+      <input type="submit" value="Submit">
+    </p>
+  </form>
+
+  <p id="subscribeMsg" style="display:none; text-align:center; margin-top:10px;">
+    ✅ Thanks! You’re subscribed.
+  </p>
+
+  <div id="socialIcons">
+    <ul>
+      <li><a href="https://twitter.com/MULHIMA_GROUP" title="Twitter" class="twitterIcon" target="_blank" rel="noopener"></a></li>
+      <li><a href="https://instagram.com/MULHIMA_GROUP" title="Instagram" class="instagramIcon" target="_blank" rel="noopener"></a></li>
+    </ul>
+  </div>
+</div>
   <p>
     <input
       type="email"
@@ -67,6 +85,34 @@
 <script type="text/javascript" src="js/Backstretch.js"></script>
 <script type="text/javascript" src="js/jquery.countdown.js"></script>
 <script type="text/javascript" src="js/global.js"></script>
+
+<script>
+(function () {
+  var form = document.getElementById('subscribeForm');
+  var msg  = document.getElementById('subscribeMsg');
+
+  if (!form) return;
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var url = form.getAttribute('action');
+    var formData = new FormData(form);
+
+    fetch(url, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: formData
+    }).then(function () {
+      form.style.display = 'none';
+      msg.style.display = 'block';
+    }).catch(function () {
+      msg.style.display = 'block';
+      msg.innerHTML = '⚠️ حدث خطأ، حاول مرة أخرى.';
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
