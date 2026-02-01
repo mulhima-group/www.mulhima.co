@@ -303,29 +303,6 @@ margin:10px;
 	position:relative !important;
 	}
 }
-.siteLogo{
-  text-align:center;
-  margin: 0 0 15px 0;
-}
-.siteLogo img{
-  display:inline-block;
-  max-width: 260px; /* عدلها لو تحب */
-  height: auto;
-}
-/* FIX: show logo on mobile and keep it above overlays */
-.siteLogo{
-  display: block !important;
-  position: relative;
-  z-index: 9999;
-  text-align: center;
-  margin: 0 0 15px 0;
-}
-
-.siteLogo img{
-  display: inline-block !important;
-  max-width: 85vw;   /* بدل 260px ثابتة */
-  height: auto !important;
-}
 
 /* Mobile improvements */
 @media (max-width: 768px){
@@ -335,4 +312,20 @@ margin:10px;
     min-height: 100%;
   }
 }
+/* Logo: fixed size on desktop + responsive on mobile */
+.siteLogo{
+  display:block !important;
+  text-align:center;
+  margin: 0 0 15px 0;
+  position: relative;
+  z-index: 9999;
+}
+
+.siteLogo img{
+  display:inline-block !important;
+  width: 240px;      /* حجم ثابت للكمبيوتر */
+  max-width: 85vw;   /* يتقلص للجوال */
+  height: auto !important;
+}
+
 
