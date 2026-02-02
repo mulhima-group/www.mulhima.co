@@ -303,5 +303,9 @@ margin:10px;
   max-width: 85vw;   /* يتقلص للجوال */
   height: auto !important;
 }
+/* Allow interaction with inputs on mobile */
+#overlay{
+  pointer-events: none;
+}
 
 
