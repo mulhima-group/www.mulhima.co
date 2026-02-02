@@ -313,9 +313,6 @@ margin:10px;
 #socialIcons{
   text-align: center !important;
 }
-#socialIcons ul{
-  display: inline-block;
-}
 
 /* Center footer signature */
 .tempBy{
@@ -334,6 +331,36 @@ margin:10px;
   #Content{
     margin-top: 60px;
   }
+}
+/* FIX social icons: no bullets + inline row */
+#socialIcons{
+  text-align: center !important;
+}
+
+#socialIcons ul{
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+#socialIcons ul li{
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: inline-block !important;
+}
+
+/* FIX signature: always centered */
+.tempBy{
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin: 25px auto 0 auto !important;
 }
 
 
