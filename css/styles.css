@@ -304,8 +304,37 @@ margin:10px;
   height: auto !important;
 }
 /* Allow interaction with inputs on mobile */
+/* Allow interaction with inputs on mobile */
 #overlay{
   pointer-events: none;
 }
+
+/* Center social icons */
+#socialIcons{
+  text-align: center !important;
+}
+#socialIcons ul{
+  display: inline-block;
+}
+
+/* Center footer signature */
+.tempBy{
+  text-align: center !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Top spacing for content */
+#Content{
+  margin-top: 40px;
+}
+
+/* Extra spacing on mobile */
+@media (max-width: 768px){
+  #Content{
+    margin-top: 60px;
+  }
+}
+
 
 
